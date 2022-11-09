@@ -10,6 +10,7 @@ import com.example.kotlin_lesson_neco.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var bindingClass: ActivityMainBinding
+    private var hiBo: String = ""
 
     /*Соаздали глабальные переменные, которые сохраняют логин, пароль,
     имя, фамилия, отчество*/
