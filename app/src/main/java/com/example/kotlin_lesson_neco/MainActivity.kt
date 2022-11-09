@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var bindingClass: ActivityMainBinding
      var ror = 1
      var ror1 = 1
+     var rorRod = 1
 
 
     /*Соаздали глабальные переменные, которые сохраняют логин, пароль,
