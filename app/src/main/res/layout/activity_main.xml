@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green">
+
+    <ImageView
+        android:id="@+id/im_avatar"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/shrek"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/tv_info"
+        app:layout_constraintEnd_toEndOf="@+id/b_Exit"
+        app:layout_constraintStart_toStartOf="@+id/b_Exit" />
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/b_Exit"
+        app:layout_constraintEnd_toEndOf="@id/b_Exit"
+        app:layout_constraintStart_toStartOf="@id/b_Exit" />
+
+
+    <Button
+        android:id="@+id/b_Exit"
+        android:textStyle="italic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="420dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/black"
+        android:onClick="onClickSignIn"
+        android:text="@string/sign_in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/b_hide"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/black"
+        android:onClick="onClickSignUp"
+        android:text="@string/sign_up"
+        app:layout_constraintEnd_toEndOf="@+id/b_Exit"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/b_Exit"
+        app:layout_constraintTop_toBottomOf="@+id/b_Exit" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
