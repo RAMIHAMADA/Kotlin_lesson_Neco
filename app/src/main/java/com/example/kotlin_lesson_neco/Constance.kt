@@ -14,4 +14,6 @@ object Constance {
     const val NAME2 ="name2"
     const val NAME3 ="name3"
     const val AVATAR_ID ="avatar_id"
+
+    const val LOGIN_FAILED = "Такого аккаунта не существует!"
 }

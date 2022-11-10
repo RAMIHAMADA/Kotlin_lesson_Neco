@@ -3,6 +3,7 @@ package com.example.kotlin_lesson_neco
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 
@@ -49,12 +50,13 @@ class MainActivity : AppCompatActivity() {
 
                 bindingClass.imAvatar.visibility = View.VISIBLE
                 bindingClass.imAvatar.setImageResource(R.drawable.shrek_2)
-                bindingClass.tvInfo.text = "Такого аккаунта не существует!"
+                bindingClass.tvInfo.text = Constance.LOGIN_FAILED
             }
         //Услоивие для регистрации
         }else if (requestCode == Constance.REQUEST_CODE_SIGN_UP){
 
             login = data?.getStringExtra(Constance.LOGIN)!!
+            Log.e("TARZAN", "onActivityResult: ", )
             password = data.getStringExtra(Constance.PASSWORD)!!
             name = data.getStringExtra(Constance.NAME)!!
             name2 = data.getStringExtra(Constance.NAME2)!!
@@ -70,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     }
     //Слушатель нажатий на кнопку SignIn
     fun onClickSignIn(view: View){
-        if (bindingClass.imAvatar.isVisible && bindingClass.tvInfo.text.toString() != "Такого аккаунта не существует!"){
+        if (bindingClass.imAvatar.isVisible && bindingClass.tvInfo.text.toString() != Constance.LOGIN_FAILED){
 
             bindingClass.imAvatar.visibility = View.INVISIBLE
             bindingClass.tvInfo.text = ""
