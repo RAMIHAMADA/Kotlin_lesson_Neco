@@ -3,7 +3,6 @@ package com.example.kotlin_lesson_neco
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 
@@ -15,11 +14,11 @@ class MainActivity : AppCompatActivity() {
 
     /*Соаздали глабальные переменные, которые сохраняют логин, пароль,
     имя, фамилия, отчество*/
-    private var login: String = "empty"
-    private var password: String = "empty"
-    private var name: String = "empty"
-    private var name2: String = "empty"
-    private var name3: String = "empty"
+    private var login: String = ""
+    private var password: String = ""
+    private var name: String = ""
+    private var name2: String = ""
+    private var name3: String = ""
     private var avatarImageId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,11 +42,10 @@ class MainActivity : AppCompatActivity() {
                 val textInfo = "$name $name2 $name3"
                 bindingClass.tvInfo.text = textInfo
                 bindingClass.bHide.visibility = View.GONE
-                bindingClass.bExit.text = "Exit"
+                bindingClass.bExit.text = Constance.B_EXIT
 
             //Если какие нибудь манипуляции были не соблюдены в if
             }else{
-
                 bindingClass.imAvatar.visibility = View.VISIBLE
                 bindingClass.imAvatar.setImageResource(R.drawable.shrek_2)
                 bindingClass.tvInfo.text = Constance.LOGIN_FAILED
@@ -55,25 +53,28 @@ class MainActivity : AppCompatActivity() {
         //Услоивие для регистрации
         }else if (requestCode == Constance.REQUEST_CODE_SIGN_UP){
 
-            login = data?.getStringExtra(Constance.LOGIN)!!
-            Log.e("TARZAN", "onActivityResult: ", )
-            password = data.getStringExtra(Constance.PASSWORD)!!
-            name = data.getStringExtra(Constance.NAME)!!
-            name2 = data.getStringExtra(Constance.NAME2)!!
-            name3 = data.getStringExtra(Constance.NAME3)!!
-            avatarImageId = data.getIntExtra(Constance.AVATAR_ID, 0)
+            try {
+                login = data?.getStringExtra(Constance.LOGIN)!!
+                password = data.getStringExtra(Constance.PASSWORD)!!
+                name = data.getStringExtra(Constance.NAME)!!
+                name2 = data.getStringExtra(Constance.NAME2)!!
+                name3 = data.getStringExtra(Constance.NAME3)!!
+                avatarImageId = data.getIntExtra(Constance.AVATAR_ID, 0)
+
+            }catch (ignored : NullPointerException ){}
+
+
             bindingClass.imAvatar.visibility = View.VISIBLE
             bindingClass.imAvatar.setImageResource(avatarImageId)
             val textInfo = "$name $name2 $name3"
             bindingClass.tvInfo.text = textInfo
             bindingClass.bHide.visibility = View.GONE
-            bindingClass.bExit.text = "Exit"
+            bindingClass.bExit.text = Constance.B_EXIT
         }
     }
     //Слушатель нажатий на кнопку SignIn
     fun onClickSignIn(view: View){
         if (bindingClass.imAvatar.isVisible && bindingClass.tvInfo.text.toString() != Constance.LOGIN_FAILED){
-
             bindingClass.imAvatar.visibility = View.INVISIBLE
             bindingClass.tvInfo.text = ""
             bindingClass.bHide.visibility = View.VISIBLE
@@ -85,8 +86,8 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra(Constance.SIGN_STATE, Constance.SIGN_IN_STATE)
             startActivityForResult(intent, Constance.REQUEST_CODE_SIGN_IN)
         }
-
     }
+
     // Слушатель нажатий на кнопку SignUp, то-что будет отображаться на SignUpAct
     fun onClickSignUp(view: View){
         val intent = Intent(this,SignInUpAct::class.java )
@@ -94,5 +95,6 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(intent,Constance.REQUEST_CODE_SIGN_UP)
 
     }
+
 
 }
